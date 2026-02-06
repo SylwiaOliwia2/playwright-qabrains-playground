@@ -12,5 +12,28 @@ pip install -r requirements.txt
 ## Running tests
 
 ```bash
-pytest
+pytest test_qabrains.py 
+```
+
+## Reporting
+
+### Save simple html report
+
+```bash
+pytest test_qabrains.py --html=report.html --self-contained-html
+```
+
+### Recording a trace (interactive report)
+
+```bash
+pytest test_qabrains.py --tracing on
+cd test-results/<REPLACE_WITH_ACTUAL_FOLDER_NAME>
+playwright show-trace trace.zip
+```
+
+**Note:** Replace `<REPLACE_WITH_ACTUAL_FOLDER_NAME>` with the actual folder name from `test-results/` directory. 
+For example, if you see a folder named `test_login_button-1234567890`, use:
+```bash
+cd test-results/test_login_button-1234567890
+playwright show-trace trace.zip
 ```
