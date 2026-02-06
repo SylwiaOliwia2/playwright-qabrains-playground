@@ -15,6 +15,12 @@ pip install -r requirements.txt
 pytest test_qabrains.py 
 ```
 
+Run specific tags:
+```bash
+pytest -m login test_qabrains.py 
+pytest -m "not login" test_qabrains.py 
+```
+
 ## Reporting
 
 ### Save simple html report

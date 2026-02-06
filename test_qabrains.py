@@ -1,4 +1,5 @@
 from playwright.sync_api import Page, expect
+import pytest
 import re
 
 
@@ -36,6 +37,7 @@ def test_button_submit(page: Page):
     expect(cancel_button).to_be_enabled()
 
 
+@pytest.mark.login
 def test_login_button(page: Page):
     page.goto("https://practice.qabrains.com/")
     success_message = page.get_by_role("heading", name="Login Successful")
@@ -57,6 +59,7 @@ def test_login_button(page: Page):
     expect(page).to_have_url(re.compile(".*logged=true"))
 
 
+@pytest.mark.login
 def test_login_enter(page: Page):
     page.goto("https://practice.qabrains.com/")
     success_message = page.get_by_role("heading", name="Login Successful")
