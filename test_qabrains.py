@@ -1,6 +1,7 @@
 from playwright.sync_api import Page, expect
 import pytest
 import re
+import os
 
 
 def test_has_heading(page: Page):
@@ -78,3 +79,17 @@ def test_login_enter(page: Page):
     
     expect(success_message).to_be_attached()
     expect(success_message).to_be_visible()
+
+
+@pytest.mark.api
+def test_api_call(page: Page):
+    """
+    Use reqres.in to test API request (learning purposes).
+    """
+    response = page.request.get(
+        "https://reqres.in/api/users?page=2",
+        headers={"x-api-key": os.getenv("X_API_KEY")}
+    )
+    assert response.ok
+    data = response.json()
+    assert len(data) > 0
