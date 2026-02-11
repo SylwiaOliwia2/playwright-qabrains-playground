@@ -175,3 +175,4 @@ demo-todo-app.spec.ts
 report.html
 test_todo_app.py
 test_demo_todo_app.py
+test_mocked_data_login_regression.py
